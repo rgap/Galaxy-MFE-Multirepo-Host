@@ -32,19 +32,6 @@ const Home = () => {
           Browse Catalog
         </Link>
         
-        <Link
-          to="/cart"
-          style={{
-            padding: '1rem 2rem',
-            backgroundColor: '#28a745',
-            color: 'white',
-            textDecoration: 'none',
-            borderRadius: '4px',
-            fontSize: '1.1rem'
-          }}
-        >
-          View Cart
-        </Link>
       </div>
     </div>
   );

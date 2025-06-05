@@ -80,7 +80,6 @@ const RootLayout = () => {
           <div style={{ display: 'flex', gap: '1rem' }}>
             <Link to="/" style={{ textDecoration: 'none', color: '#333' }}>Home</Link>
             <Link to="/catalog" style={{ textDecoration: 'none', color: '#333' }}>Catalog</Link>
-            <Link to="/cart" style={{ textDecoration: 'none', color: '#333' }}>Cart</Link>
           </div>
         </div>
       </nav>
