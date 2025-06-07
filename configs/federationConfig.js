@@ -6,6 +6,7 @@ module.exports = {
   remotes: {
     catalog: 'catalog@http://localhost:3001/remoteEntry.js',
     cart: 'cart@http://localhost:3002/remoteEntry.js',
+    checkout: 'checkout@http://localhost:3003/remoteEntry.js'
   },
   shared: {
     react: {

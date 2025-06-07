@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 
 const Catalog = lazy(() => import('catalog/App'));
 const Cart = lazy(() => import('cart/App'));
+const Checkout = lazy(() => import('checkout/App'));
 
 const Loading = () => <div>Loading...</div>;
 
@@ -29,6 +30,14 @@ export const routes = [
         element: (
           <Suspense fallback={<Loading />}>
             <Cart />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'checkout/*',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Checkout />
           </Suspense>
         ),
       },
