@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 // Import CartWidget lazily
 const CartWidget = lazy(() => import('cart/CartWidget'));
@@ -63,6 +63,9 @@ const CartWidgetContainer = () => (
 );
 
 const RootLayout = () => {
+  const location = useLocation();
+  const isCheckoutPage = location.pathname.startsWith('/checkout');
+
   return (
     <div>
       <nav style={{
@@ -91,17 +94,23 @@ const RootLayout = () => {
         margin: '0 auto',
         minHeight: 'calc(100vh - 57px)'
       }}>
-        <main style={{ flex: 1, padding: '2rem' }}>
+        <main style={{ 
+          flex: 1, 
+          padding: '2rem',
+          maxWidth: isCheckoutPage ? '100%' : 'calc(100% - 400px)'
+        }}>
           <Outlet />
         </main>
 
-        <aside style={{
-          width: '400px',
-          borderLeft: '1px solid #ddd',
-          backgroundColor: '#fff'
-        }}>
-          <CartWidgetContainer />
-        </aside>
+        {!isCheckoutPage && (
+          <aside style={{
+            width: '400px',
+            borderLeft: '1px solid #ddd',
+            backgroundColor: '#fff'
+          }}>
+            <CartWidgetContainer />
+          </aside>
+        )}
       </div>
     </div>
   );
