@@ -1,3 +1,4 @@
+import { Button } from 'common-components-react';
 import React, { lazy, Suspense } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
@@ -32,20 +33,12 @@ class ErrorBoundaryComponent extends React.Component {
       return (
         <div style={{ padding: '1rem', color: '#666' }}>
           <p>Failed to load component. Please try again later.</p>
-          <button 
+          <Button 
+            variant="primary"
             onClick={this.resetError}
-            style={{
-              padding: '0.5rem 1rem',
-              marginTop: '0.5rem',
-              backgroundColor: '#007bff',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
           >
             Retry
-          </button>
+          </Button>
         </div>
       );
     }
