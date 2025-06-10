@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "webpack serve --config configs/webpack.dev.js",
+    "start:standalone": "webpack serve --config configs/webpack.standalone.js",
     "build": "webpack --config configs/webpack.prod.js"
   },
   "devDependencies": {
