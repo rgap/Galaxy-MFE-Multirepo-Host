@@ -1,0 +1,27 @@
+/* Home Page Styles */
+.home-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-title {
+  margin-bottom: 2rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.home-description {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-bottom: 2rem;
+  color: #6b7280;
+}
+
+.home-actions {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+} 

@@ -1,12 +1,11 @@
 import React, { lazy, Suspense } from "react";
+import { Loading } from "../components";
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home";
 
 const Catalog = lazy(() => import("catalog/App"));
 const Cart = lazy(() => import("cart/App"));
 const Checkout = lazy(() => import("checkout/App"));
-
-const Loading = () => <div>Loading...</div>;
 
 export const routes = [
   {
@@ -20,7 +19,7 @@ export const routes = [
       {
         path: "catalog/*",
         element: (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading message="Loading catalog..." />}>
             <Catalog />
           </Suspense>
         ),
@@ -28,7 +27,7 @@ export const routes = [
       {
         path: "cart/*",
         element: (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading message="Loading cart..." />}>
             <Cart />
           </Suspense>
         ),
@@ -36,7 +35,7 @@ export const routes = [
       {
         path: "checkout/*",
         element: (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading message="Loading checkout..." />}>
             <Checkout />
           </Suspense>
         ),
