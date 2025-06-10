@@ -5,7 +5,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 // Import CartWidget lazily
 const CartWidget = lazy(() => import("cart/CartWidget"));
 
-const LoadingFallback = () => <div className="p-4">Loading cart...</div>;
+const LoadingFallback = () => <div className="loading">Loading cart...</div>;
 
 class ErrorBoundaryComponent extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class ErrorBoundaryComponent extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-4 text-gray-600">
+        <div className="error-container">
           <p>Failed to load component. Please try again later.</p>
           <Button variant="primary" onClick={this.resetError}>
             Retry
@@ -56,29 +56,29 @@ const RootLayout = () => {
 
   return (
     <div>
-      <nav className="p-4 bg-gray-50 border-b border-gray-300">
-        <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <div className="flex gap-4">
-            <Link to="/" className="no-underline text-gray-800 hover:text-blue-600 transition-colors">
+      <nav className="nav">
+        <div className="nav-container">
+          <div className="nav-links">
+            <Link to="/" className="nav-link">
               Home
             </Link>
-            <Link to="/catalog" className="no-underline text-gray-800 hover:text-blue-600 transition-colors">
+            <Link to="/catalog" className="nav-link">
               Catalog
             </Link>
-            <Link to="/checkout" className="no-underline text-gray-800 hover:text-blue-600 transition-colors">
+            <Link to="/checkout" className="nav-link">
               Checkout
             </Link>
           </div>
         </div>
       </nav>
 
-      <div className="flex max-w-7xl mx-auto min-h-[calc(100vh-57px)]">
-        <main className={`flex-1 p-8 ${isCheckoutPage ? "max-w-full" : "max-w-[calc(100%-400px)]"}`}>
+      <div className="main-container">
+        <main className={`main-content ${isCheckoutPage ? "full-width" : "with-sidebar"}`}>
           <Outlet />
         </main>
 
         {!isCheckoutPage && (
-          <aside className="w-96 border-l border-gray-300 bg-white">
+          <aside className="sidebar">
             <CartWidgetContainer />
           </aside>
         )}
