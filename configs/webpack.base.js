@@ -20,22 +20,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          "style-loader", // Injects styles into DOM
-          "css-loader", // Turns CSS into JS
-          {
-            loader: "sass-loader", // Compiles SCSS to CSS
-            options: {
-              sassOptions: {
-                includePaths: ["node_modules"],
-              },
-            },
-          },
-        ],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },

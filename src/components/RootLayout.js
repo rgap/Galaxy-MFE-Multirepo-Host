@@ -5,7 +5,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 // Import CartWidget lazily
 const CartWidget = lazy(() => import("cart/CartWidget"));
 
-const LoadingFallback = () => <div style={{ padding: "1rem" }}>Loading cart...</div>;
+const LoadingFallback = () => <div className="p-4">Loading cart...</div>;
 
 class ErrorBoundaryComponent extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class ErrorBoundaryComponent extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: "1rem", color: "#666" }}>
+        <div className="p-4 text-gray-600">
           <p>Failed to load component. Please try again later.</p>
           <Button variant="primary" onClick={this.resetError}>
             Retry
@@ -56,62 +56,29 @@ const RootLayout = () => {
 
   return (
     <div>
-      <nav
-        style={{
-          padding: "1rem",
-          backgroundColor: "#f8f9fa",
-          borderBottom: "1px solid #ddd",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            maxWidth: "1600px",
-            margin: "0 auto",
-          }}
-        >
-          <div style={{ display: "flex", gap: "1rem" }}>
-            <Link to="/" style={{ textDecoration: "none", color: "#333" }}>
+      <nav className="p-4 bg-gray-50 border-b border-gray-300">
+        <div className="flex justify-between items-center max-w-7xl mx-auto">
+          <div className="flex gap-4">
+            <Link to="/" className="no-underline text-gray-800 hover:text-blue-600 transition-colors">
               Home
             </Link>
-            <Link to="/catalog" style={{ textDecoration: "none", color: "#333" }}>
+            <Link to="/catalog" className="no-underline text-gray-800 hover:text-blue-600 transition-colors">
               Catalog
             </Link>
-            <Link to="/checkout" style={{ textDecoration: "none", color: "#333" }}>
+            <Link to="/checkout" className="no-underline text-gray-800 hover:text-blue-600 transition-colors">
               Checkout
             </Link>
           </div>
         </div>
       </nav>
 
-      <div
-        style={{
-          display: "flex",
-          maxWidth: "1600px",
-          margin: "0 auto",
-          minHeight: "calc(100vh - 57px)",
-        }}
-      >
-        <main
-          style={{
-            flex: 1,
-            padding: "2rem",
-            maxWidth: isCheckoutPage ? "100%" : "calc(100% - 400px)",
-          }}
-        >
+      <div className="flex max-w-7xl mx-auto min-h-[calc(100vh-57px)]">
+        <main className={`flex-1 p-8 ${isCheckoutPage ? "max-w-full" : "max-w-[calc(100%-400px)]"}`}>
           <Outlet />
         </main>
 
         {!isCheckoutPage && (
-          <aside
-            style={{
-              width: "400px",
-              borderLeft: "1px solid #ddd",
-              backgroundColor: "#fff",
-            }}
-          >
+          <aside className="w-96 border-l border-gray-300 bg-white">
             <CartWidgetContainer />
           </aside>
         )}
