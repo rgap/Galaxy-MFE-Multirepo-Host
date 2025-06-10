@@ -1,5 +1,5 @@
 // ... existing code ...
-import { Button } from "common-components-react";
+import { Button } from "mfe-common-components";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const Home = () => {
         }}
       >
         <Link to="/catalog" style={{ textDecoration: "none" }}>
-          <Button className="btn-primary">Browse Catalog</Button>
+          <Button variant="primary">Browse Catalog</Button>
         </Link>
       </div>
     </div>
